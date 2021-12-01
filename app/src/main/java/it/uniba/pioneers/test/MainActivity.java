@@ -1,8 +1,14 @@
 package it.uniba.pioneers.test;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.common.graph.Graph;
+import com.google.common.graph.GraphBuilder;
+import com.google.common.graph.MutableValueGraph;
+import com.google.common.graph.ValueGraphBuilder;
+import com.google.gson.Gson;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +23,7 @@ import it.uniba.pioneers.test.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+
+                Grafo g = new Grafo(binding.getRoot().getContext());
+
+
+                g.readToFile(binding.getRoot().getContext());
+
+                Toast.makeText(binding.getRoot().getContext(), g.graph.toString(), Toast.LENGTH_LONG).show();
+
             }
         });
     }
